@@ -1,0 +1,36 @@
+<div class="container mt-4">
+  <div class="box ">
+    <h3>Please Enter The Values</h3>
+    <form #pieForm="ngForm" (ngSubmit)="createChart()">
+      <div class="col-6 ">
+        <div class="form-group">
+          <label for="value1">Number 1</label>
+          <input type="number" class="form-control" id="num1" ngModel name="val1" min="0" max="100" required #value1="ngModel"  (blur)="onInput1Blur()">
+          <span class="text-danger" >
+            <ng-container *ngIf="value1?.errors?.['max']">*Number should be in between 1 to 100</ng-container>
+          </span>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="value2">Number 2</label>
+          <input type="number" class="form-control" id="num2" ngModel name="val2" min="0" max="100" required  #value2="ngModel"  (blur)="onInput2Blur()">
+          <span class="text-danger" >
+            <ng-container *ngIf="value2?.errors?.['max']">Number should be in between 1 to 100</ng-container>
+          </span>
+        </div>
+      </div>
+      <div class="col-6">
+        <button type="submit" class="btn btn-primary mt-4" [disabled]="(value1.value + value2.value)!==100">Create Chart</button>
+      </div>
+    </form>
+  </div>
+  </div>
+    <div class="box mt-5">
+      <h2>My Chart</h2>
+      <canvas id="PieChart" ></canvas>
+    </div>
+        
+        
+          
+         
